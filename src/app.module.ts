@@ -14,7 +14,7 @@ import { UsersModule } from './users/users.module';
       password: process.env.DB_PASS || 'nest',
       database: process.env.DB_NAME || 'users',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: process.env.NODE_ENV !== 'production',
+      synchronize: true,
     }),
     UsersModule,
   ],
