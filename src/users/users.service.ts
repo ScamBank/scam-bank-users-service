@@ -43,7 +43,7 @@ export class UsersService {
     uniqueFieldsQueries.push(
       this.usersRepository
         .findOne({ where: { passport: dto.passport } })
-        .then((user) => user && { field: 'паспорт', value: dto.passport }),
+        .then((user) => user && { field: 'passport', value: dto.passport }),
     );
 
     const results = await Promise.all(uniqueFieldsQueries);

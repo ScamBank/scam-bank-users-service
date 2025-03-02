@@ -16,7 +16,11 @@ export class CreateUserDto {
   @Length(2, 50, { message: 'Имя должно быть от 2 до 50 символов' })
   readonly firstName: string;
 
-  @ApiProperty({ example: 'Иванович', description: 'Отчество пользователя' })
+  @ApiProperty({
+    example: 'Иванович',
+    description: 'Отчество пользователя',
+    required: false,
+  })
   @IsString()
   @Length(0, 50, { message: 'Отчество должно быть не более 50 символов' })
   readonly middleName: string;
@@ -53,7 +57,11 @@ export class CreateUserDto {
   @IsDateString({}, { message: 'Неверный формат даты (YYYY-MM-DD)' })
   birthDate: string;
 
-  @ApiProperty({ example: 'test@example.com', description: 'Email' })
+  @ApiProperty({
+    example: 'test@example.com',
+    description: 'Email',
+    required: false,
+  })
   @IsEmail({}, { message: 'Неверный формат email' })
   email: string;
 }
