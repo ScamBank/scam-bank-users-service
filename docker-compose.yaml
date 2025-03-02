@@ -13,7 +13,7 @@ services:
       - DB_PASS=nest
       - DB_NAME=users
     ports:
-      - '3000:3000'
+      - '3001:3000'
 
   postgres:
     image: postgres:15
