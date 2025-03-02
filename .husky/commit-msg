@@ -1,4 +1,4 @@
-emoji=$(git config user.emoji || git config --global user.emoji || echo "")
+emoji=$(git config user.emoji || echo "")
 branch=$(git symbolic-ref --short HEAD)
 message=$(cat "$1")
 
