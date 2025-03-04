@@ -5,12 +5,13 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('users');
 
   const config = new DocumentBuilder()
     .setTitle('Scam Bank Users Service')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('users/docs', app, documentFactory());
+  SwaggerModule.setup('docs', app, documentFactory());
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -23,7 +24,7 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(process.env.PORT ?? 1337);
-  console.log(`Server is running on port ${process.env.PORT ?? 1337}`);
+  await app.listen(process.env.PORT ?? 3001);
+  console.log(`Server is running on port ${process.env.PORT ?? 3001}`);
 }
 bootstrap();
