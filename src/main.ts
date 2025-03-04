@@ -11,7 +11,7 @@ async function bootstrap() {
     .setTitle('Scam Bank Users Service')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, documentFactory());
+  SwaggerModule.setup('users/docs', app, documentFactory());
 
   app.useGlobalPipes(
     new ValidationPipe({
