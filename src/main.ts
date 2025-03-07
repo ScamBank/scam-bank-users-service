@@ -4,7 +4,12 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    cors: {
+      credentials: true,
+      origin: true,
+    },
+  });
   app.setGlobalPrefix('users');
 
   const config = new DocumentBuilder()
