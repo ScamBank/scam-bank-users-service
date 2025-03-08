@@ -10,13 +10,12 @@ async function bootstrap() {
       origin: true,
     },
   });
-  app.setGlobalPrefix('users');
 
   const config = new DocumentBuilder()
     .setTitle('Scam Bank Users Service')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('users/docs', app, documentFactory());
+  SwaggerModule.setup('/docs', app, documentFactory());
 
   app.useGlobalPipes(
     new ValidationPipe({

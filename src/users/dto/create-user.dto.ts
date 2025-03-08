@@ -1,5 +1,4 @@
 import {
-  IsPhoneNumber,
   IsString,
   Matches,
   IsNotEmpty,
@@ -32,14 +31,16 @@ export class CreateUserDto {
   readonly lastName: string;
 
   @ApiProperty({ example: '+79001234567', description: 'Номер телефона' })
-  @IsPhoneNumber('RU', { message: 'Неверный формат номера телефона' })
+  @Matches(/^\+7-\(\d{3}\)-\d{3}-\d{2}-\d{2}$/, {
+    message: 'Неверный формат номера телефона',
+  })
   @IsNotEmpty({ message: 'Номер телефона не может быть пустым' })
   readonly phoneNumber: string;
 
   @ApiProperty({ example: '123-456-789 00', description: 'СНИЛС' })
   @IsString()
   @IsNotEmpty({ message: 'СНИЛС не может быть пустым' })
-  @Matches(/^\d{3}-\d{3}-\d{3} \d{2}$/, {
+  @Matches(/^\d{3}-\d{3}-\d{3}\s\d{2}$/, {
     message: 'Неверный формат СНИЛС (должен быть XXX-XXX-XXX XX)',
   })
   snils: string;
@@ -47,7 +48,7 @@ export class CreateUserDto {
   @ApiProperty({ example: '4444 123456', description: 'Паспорт' })
   @IsString()
   @IsNotEmpty({ message: 'Номер паспорта не может быть пустым' })
-  @Matches(/^\d{4} \d{6}$/, {
+  @Matches(/^\d{4}\s\d{6}$/, {
     message: 'Неверный формат паспорта (должен быть XXXX XXXXXX)',
   })
   passport: string;

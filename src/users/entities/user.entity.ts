@@ -1,10 +1,4 @@
-import {
-  IsDateString,
-  IsEmail,
-  IsPhoneNumber,
-  Matches,
-  Length,
-} from 'class-validator';
+import { IsDateString, IsEmail, Matches, Length } from 'class-validator';
 import {
   Column,
   Entity,
@@ -38,7 +32,6 @@ export class User {
 
   @Index('idx_user_phone')
   @Column({ unique: true })
-  @IsPhoneNumber('RU')
   phoneNumber: string;
 
   @Column({ type: 'date' })
@@ -47,7 +40,6 @@ export class User {
 
   @Index('idx_user_snils')
   @Column({ unique: true })
-  @Matches(/^\d{3}-\d{3}-\d{3} \d{2}$/)
   snils: string;
 
   @Index('idx_user_passport')
